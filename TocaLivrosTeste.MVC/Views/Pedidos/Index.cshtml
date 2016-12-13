@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TocaLivrosTeste.MVC.ViewModels.PedidoViewModel>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Pedidos</h2>
+
+<p> 
+    @(Html.ActionLink("Adicionar pedido", "Create", null, new { @class = "btn btn-success" }))
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Cliente")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Situacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Situacao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.PedidoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.PedidoId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.PedidoId })
+        </td>
+    </tr>
+}
+
+</table>
+
